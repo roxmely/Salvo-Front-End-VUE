@@ -1,0 +1,43 @@
+{
+  "name": "front-end",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "@mdi/font": "^5.1.45",
+    "axios": "^0.19.2",
+    "bootstrap": "^4.4.1",
+    "bootstrap-vue": "^2.13.1",
+    "core-js": "^3.6.4",
+    "mdbvue": "^6.7.0",
+    "moment": "^2.24.0",
+    "vue": "^2.6.11",
+    "vue-drag-drop": "^1.1.4",
+    "vue-draggable": "^2.0.6",
+    "vue-router": "^3.1.6",
+    "vue-router-back-button": "^1.2.3",
+    "vue2-form-loading": "^0.1.0",
+    "vuetify": "^2.2.11",
+    "vuex": "^3.1.3"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.3.0",
+    "@vue/cli-plugin-router": "~4.3.0",
+    "@vue/cli-plugin-vuex": "~4.3.0",
+    "@vue/cli-service": "~4.3.0",
+    "prettier": "2.0.5",
+    "sass": "^1.19.0",
+    "sass-loader": "^8.0.0",
+    "vue-cli-plugin-vuetify": "~2.0.5",
+    "vue-template-compiler": "^2.6.11",
+    "vuetify-loader": "^1.3.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
