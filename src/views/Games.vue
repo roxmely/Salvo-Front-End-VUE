@@ -103,208 +103,198 @@
         </v-app>-->
       </div>
     </div>
-    <div>
-      <div style="text-align: center;">
-        <h1
-          style="
-            background-color: rgba(0, 0, 0, 0.87);
-            width: 300px;
-            margin: auto auto 10px;
-            color: aliceblue;
-            border: solid rgb(118, 123, 124);
-            border-radius: 8px;
-            padding: 4px;
-            font-size: 35px;
-          "
-        >
-          GAME LIST
-        </h1>
-        <div
-          class="table-responsive"
-          style="
-            width: 60%;
-            max-height: 100vh;
-            height: 388px;
-            margin: auto;
-            background: #000000c9;
-            border-radius: 15px;
-            border-right: solid;
-            border-top: solid;
-            border-left: solid;
-            border-width: 8px;
-            border-color: #767b7c;
-            margin-bottom: 50px;
-          "
-        >
-          <table
-            class="table"
-            style="text-align: center; color: greenyellow; font-size: 15px;"
-          >
-            <thead
-              style="
-                color: white;
-                width: 65.6%;
-                background: black;
-                border-radius: 5px;
-              "
-            >
-              <tr>
-                <th>
-                  <button
-                    v-show="authenticated == true"
-                    @click="createGame"
-                    style="
-                      display: flex;
-                      align-items: center;
-                      justify-content: center;
-                      margin: auto;
-                      border-radius: 15px;
-                      border: solid;
-                      border-width: 4px;
-                      border-color: #767b7c;
-                      width: 130px;
-                      height: 42px;
-                    "
-                  >
-                    <img
-                      style="width: 35pxpx; height: 35px;"
-                      src="https://cdn.pixabay.com/photo/2014/04/02/14/08/radar-306289_960_720.png"
-                      alt=""
-                    />
-                    <v-card-title style="font-size: 11px; color: red;"
-                      >NEW GAME</v-card-title
-                    >
-                  </button>
-                </th>
-                <th>Game #</th>
-                <th>Player 1 (creator)</th>
-                <th>VS</th>
-                <th>Player 2</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="(game, i) in games" :key="i.id" :v-if="games">
-                <td>
-                  <router-link
-                    v-if="userLogueado && getGpId(game)"
-                    :to="'/game/gp/' + getGpId(game)"
-                    style="text-decoration: none;"
-                  >
-                    <button
-                      style="
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        margin: auto;
-                        border-radius: 15px;
-                        border: solid;
-                        border-width: 2px;
-                        border-color: green;
-                        width: 105px;
-                        height: 40px;
-                      "
-                      v-if="game.gamePlayers.length >= 2"
-                      v-show="
-                        username == game.gamePlayers[1].player.email ||
-                        username == game.gamePlayers[0].player.email
-                      "
-                    >
-                      <img
-                        style="width: 24px;"
-                        src="https://image.flaticon.com/icons/svg/487/487021.svg"
-                        alt=""
-                      />
-
-                      <v-card-title style="font-size: 8.5px; color: green;"
-                        >PLAY NOW</v-card-title
-                      >
-                    </button>
-
-                    <button
-                      style="
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        margin: auto;
-                        border-radius: 15px;
-                        border: solid;
-                        border-width: 2px;
-                        border-color: red;
-                        width: 105px;
-                        height: 40px;
-                      "
-                      v-else-if="game.gamePlayers.length == 1"
-                      v-show="username == game.gamePlayers[0].player.email"
-                    >
-                      <img
-                        style="width: 24px;"
-                        src="https://image.flaticon.com/icons/svg/487/487021.svg"
-                        alt=""
-                      />
-                      <v-card-title style="font-size: 10.5px; color: white;"
-                        >WAITING</v-card-title
-                      >
-                    </button>
-                  </router-link>
-                  <button
-                    style="
-                      display: flex;
-                      align-items: center;
-                      justify-content: center;
-                      margin: auto;
-                      border-radius: 15px;
-                      border: solid;
-                      border-width: 4px;
-                      border-color: #767b7c;
-                      width: 105px;
-                      height: 40px;
-                    "
-                    id="joinButton"
-                    v-if="
-                      authenticated == true &&
-                      games != null &&
-                      game.gamePlayers.length == 1 &&
-                      username != game.gamePlayers[0].player.email
-                    "
-                    @click="joinGame(game.id)"
-                  >
-                    <img
-                      style="width: 24px;"
-                      src="https://image.flaticon.com/icons/svg/487/487021.svg"
-                      alt=""
-                    />
-                    <v-card-title style="font-size: 12px; color: cyan;"
-                      >JOIN</v-card-title
-                    >
-                  </button>
-                  <p
-                    v-if="
-                      authenticated &&
-                      game.gamePlayers.length == 2 &&
-                      username != game.gamePlayers[1].player.email &&
-                      username != game.gamePlayers[0].player.email
-                    "
-                    style="color: powderblue; font-size: 18px; margin: auto;"
-                  >
-                    Full Game
-                  </p>
-                </td>
-
-                <td>{{ game.id }}</td>
-                <td>{{ game.gamePlayers[0].player.email }}</td>
-                <td></td>
-                <td v-if="game.gamePlayers.length > 1">
-                  {{ game.gamePlayers[1].player.email }}
-                </td>
-                <td v-else>
-                  <span class="wait">Waiting for an opponent</span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+    <div style="text-align: center;">
+      <h1
+        style="
+          background-color: rgba(0, 0, 0, 0.87);
+          width: 300px;
+          margin: auto auto 10px;
+          color: aliceblue;
+          border: solid rgb(118, 123, 124);
+          border-radius: 8px;
+          padding: 4px;
+          font-size: 35px;
+        "
+      >
+        GAME LIST
+      </h1>
     </div>
+    <div
+      class="container table-responsive"
+      style="
+        margin: auto;
+        width: 1050px;
+        background: #000000c9;
+        border-radius: 15px;
+        border-right: solid;
+        border-top: solid;
+        border-left: solid;
+        border-width: 8px;
+        border-color: #767b7c;
+        margin-bottom: 50px;
+      "
+    >
+      <table
+        class="table table-striped header-fixed"
+        style="text-align: center; color: greenyellow; font-size: 15px;"
+      >
+        <thead style="color: white; background: black; border-radius: 5px;">
+          <tr>
+            <th style="height: 60px;">
+              <button
+                v-show="authenticated == true"
+                @click="createGame"
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  margin: auto;
+                  border-radius: 15px;
+                  border: solid;
+                  border-width: 4px;
+                  border-color: #767b7c;
+                  width: 130px;
+                  height: 42px;
+                "
+              >
+                <img
+                  style="width: 35pxpx; height: 35px;"
+                  src="https://cdn.pixabay.com/photo/2014/04/02/14/08/radar-306289_960_720.png"
+                  alt=""
+                />
+                <v-card-title style="font-size: 11px; color: red;"
+                  >NEW GAME</v-card-title
+                >
+              </button>
+            </th>
+            <th>Game #</th>
+            <th>Player 1 (creator)</th>
+            <th>VS</th>
+            <th>Player 2</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(game, i) in games" :key="i.id" :v-if="games">
+            <td>
+              <router-link
+                v-if="userLogueado && getGpId(game)"
+                :to="'/game/gp/' + getGpId(game)"
+                style="text-decoration: none;"
+              >
+                <button
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: auto;
+                    border-radius: 15px;
+                    border: solid;
+                    border-width: 2px;
+                    border-color: green;
+                    width: 105px;
+                    height: 40px;
+                  "
+                  v-if="game.gamePlayers.length >= 2"
+                  v-show="
+                    username == game.gamePlayers[1].player.email ||
+                    username == game.gamePlayers[0].player.email
+                  "
+                >
+                  <img
+                    style="width: 24px;"
+                    src="https://image.flaticon.com/icons/svg/487/487021.svg"
+                    alt=""
+                  />
+
+                  <v-card-title style="font-size: 8.5px; color: green;"
+                    >PLAY NOW</v-card-title
+                  >
+                </button>
+
+                <button
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: auto;
+                    border-radius: 15px;
+                    border: solid;
+                    border-width: 2px;
+                    border-color: red;
+                    width: 105px;
+                    height: 40px;
+                  "
+                  v-else-if="game.gamePlayers.length == 1"
+                  v-show="username == game.gamePlayers[0].player.email"
+                >
+                  <img
+                    style="width: 24px;"
+                    src="https://image.flaticon.com/icons/svg/487/487021.svg"
+                    alt=""
+                  />
+                  <v-card-title style="font-size: 10.5px; color: white;"
+                    >WAITING</v-card-title
+                  >
+                </button>
+              </router-link>
+              <button
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  margin: auto;
+                  border-radius: 15px;
+                  border: solid;
+                  border-width: 4px;
+                  border-color: #767b7c;
+                  width: 105px;
+                  height: 40px;
+                "
+                id="joinButton"
+                v-if="
+                  authenticated == true &&
+                  games != null &&
+                  game.gamePlayers.length == 1 &&
+                  username != game.gamePlayers[0].player.email
+                "
+                @click="joinGame(game.id)"
+              >
+                <img
+                  style="width: 24px;"
+                  src="https://image.flaticon.com/icons/svg/487/487021.svg"
+                  alt=""
+                />
+                <v-card-title style="font-size: 12px; color: cyan;"
+                  >JOIN</v-card-title
+                >
+              </button>
+              <p
+                v-if="
+                  authenticated &&
+                  game.gamePlayers.length == 2 &&
+                  username != game.gamePlayers[1].player.email &&
+                  username != game.gamePlayers[0].player.email
+                "
+                style="color: powderblue; font-size: 18px; margin: auto;"
+              >
+                Full Game
+              </p>
+            </td>
+
+            <td>{{ game.id }}</td>
+            <td>{{ game.gamePlayers[0].player.email }}</td>
+            <td></td>
+            <td v-if="game.gamePlayers.length > 1">
+              {{ game.gamePlayers[1].player.email }}
+            </td>
+            <td v-else>
+              <span class="wait">Waiting for an opponent</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
     <leader />
   </div>
 </template>
@@ -616,5 +606,36 @@ export default {
 }
 .container {
   max-width: 2000px !important;
+}
+.header-fixed {
+  width: 100%;
+}
+
+.header-fixed > thead,
+.header-fixed > tbody,
+.header-fixed > thead > tr,
+.header-fixed > tbody > tr,
+.header-fixed > thead > tr > th,
+.header-fixed > tbody > tr > td {
+  display: block;
+}
+
+.header-fixed > tbody > tr:after,
+.header-fixed > thead > tr:after {
+  content: " ";
+  display: block;
+  visibility: hidden;
+  clear: both;
+}
+
+.header-fixed > tbody {
+  overflow-y: auto;
+  height: 400px;
+}
+
+.header-fixed > tbody > tr > td,
+.header-fixed > thead > tr > th {
+  width: 20%;
+  float: left;
 }
 </style>
