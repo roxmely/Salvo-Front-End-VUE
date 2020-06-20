@@ -120,10 +120,10 @@
       </h1>
     </div>
     <div
-      class="container table-responsive"
+      class="table-responsive"
       style="
         margin: auto;
-        width: 1050px;
+        width: 70%;
         background: #000000c9;
         border-radius: 15px;
         border-right: solid;
@@ -636,6 +636,7 @@ export default {
 .header-fixed > tbody > tr > td,
 .header-fixed > thead > tr > th {
   width: 20%;
+  height: 60px;
   float: left;
 }
 </style>

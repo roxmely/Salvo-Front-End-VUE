@@ -142,9 +142,9 @@
                   >
                     <button
                       style="
-                  font-size:5px;
+                  font-size:7px;
                   width: 34px;
-                  color: blue;
+                  color: white;
                   border: outset; 
                   border-color:orange                   
                   max-width: 34px;
@@ -172,9 +172,9 @@
                   >
                     <button
                       style="
-                  font-size:5px;
+                  font-size:7px;
                   width: 34px;
-                  color: blue;
+                  color: white;
                   border: outset; 
                   border-color:orange                   
                   max-width: 34px;
@@ -201,9 +201,9 @@
                   >
                     <button
                       style="
-                    font-size:5px;
+                    font-size:7px;
                   width: 34px;
-                  color: blue;
+                  color: white;
                   border: outset; 
                   border-color:orange                   
                   max-width: 34px;
@@ -230,9 +230,9 @@
                   >
                     <button
                       style="
-                     font-size:5px;
+                     font-size:7px;
                   width: 34px;
-                  color: blue;
+                  color: white;
                   border: outset; 
                   border-color:orange                   
                   max-width: 34px;
@@ -259,9 +259,9 @@
                   >
                     <button
                       style="
-                     font-size:5px;
+                     font-size:7px;
                   width: 34px;
-                  color: blue;
+                  color: white;
                   border: outset; 
                   border-color:orange                   
                   max-width: 34px;
