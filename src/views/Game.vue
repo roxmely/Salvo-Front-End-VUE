@@ -474,6 +474,7 @@ export default {
       ships: [],
       history: [],
       salvoes: [],
+      salvo: [],
       shipCell: " ",
       lastShipPos: "",
       gpids: "",
