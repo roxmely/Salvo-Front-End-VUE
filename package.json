@@ -15,7 +15,7 @@
     "elliptic": "^6.5.3",
     "lodash": "^4.17.19",
     "mdbvue": "^6.7.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "vue": "^2.6.11",
     "vue-drag-drop": "^1.1.4",
     "vue-draggable": "^2.0.6",
